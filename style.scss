@@ -1,0 +1,108 @@
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+@use "sass:color";
+
+$bg: #282828;
+$bg-1: #3c3836;
+$fg: #ebdbb2;
+$accent: #98971a;
+$radius: 10px;
+
+label {
+	font-family: Inter;
+	font-size: 16px;
+	font-weight: bold;
+	color: $fg;
+}
+
+PopupWindows {
+	background: transparent;
+}
+.PopupContent {
+	background: #282828;
+	border: 1px solid $fg;
+}
+
+image {
+	border-radius: $radius;
+}
+
+.LongTime {
+	font-size: 50px;
+}
+.LongTimeDate {
+	font-size: 20px;
+}
+box {
+	border-radius: $radius;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	/* padding: 5px, 10px, 5px, 10px; */
+}
+
+.container {
+	border: 1px solid $fg;
+	background: $bg-1;
+	border-radius: $radius;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.separator {
+	background-color: $fg;
+}
+
+scale {
+	margin: 0;
+	padding: 0 0.25rem;
+	padding-left: 0.7rem;
+	trough {
+		border-radius: calc(nth($radius, 1) * 99);
+		highlight {
+			background-color: $fg;
+			color: $fg;
+			min-height: 25px;
+			// min-width: 25px;
+			border-radius: calc(nth($radius, 1) * 99);
+		}
+		slider {
+			box-shadow: none;
+			outline: unset;
+			background-color: transparent;
+		}
+	}
+}
+
+window.Bar {
+	background: $bg;
+	color: $fg;
+	font-family: JetbrainsMono Nerd Font;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: $radius;
+
+	> centerbox {
+		background: #282828;
+		border-radius: 10px;
+		margin: 0px;
+	}
+
+	popover {
+		color: $bg;
+		/* background: $bg-1;
+		padding: 0.5rem; */
+	}
+
+	popover arrow {
+		opacity: 0;
+	}
+
+	button {
+		border-radius: 8px;
+		margin: 2px;
+	}
+}

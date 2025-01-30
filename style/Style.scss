@@ -1,11 +1,8 @@
 // https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
 @use "sass:color";
-
-$bg: #282828;
-$bg-1: #3c3836;
-$fg: #ebdbb2;
-$accent: #98971a;
-$radius: 10px;
+@import "PopupWindows.scss";
+@import "Variable.scss";
+@import "Separator.scss";
 
 label {
 	font-family: Inter;
@@ -14,30 +11,16 @@ label {
 	color: $fg;
 }
 
-PopupWindows {
-	background: transparent;
-}
-.PopupContent {
-	background: #282828;
-	/* border: 1px solid $fg; */
-}
-
 image {
 	border-radius: $radius;
 }
 
-.LongTime {
-	font-size: 50px;
-}
-.LongTimeDate {
-	font-size: 20px;
-}
 box {
 	border-radius: $radius;
-	margin-top: 5px;
+	/* margin-top: 5px;
 	margin-bottom: 5px;
 	margin-left: 10px;
-	margin-right: 10px;
+	margin-right: 10px; */
 	/* padding: 5px, 10px, 5px, 10px; */
 }
 
@@ -50,10 +33,6 @@ box {
 	margin-bottom: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
-}
-
-.separator {
-	background-color: $fg;
 }
 
 scale {
@@ -92,18 +71,8 @@ window.Bar {
 		margin: 0px;
 	}
 
-	popover {
-		color: $bg;
-		/* background: $bg-1;
-		padding: 0.5rem; */
-	}
-
-	popover arrow {
-		opacity: 0;
-	}
-
 	button {
 		border-radius: 8px;
-		margin: 2px;
+		margin: 1px;
 	}
 }

@@ -9,7 +9,7 @@ $radius: 10px;
 
 label {
 	font-family: Inter;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: bold;
 	color: $fg;
 }
@@ -19,7 +19,7 @@ PopupWindows {
 }
 .PopupContent {
 	background: #282828;
-	border: 1px solid $fg;
+	/* border: 1px solid $fg; */
 }
 
 image {
@@ -78,7 +78,8 @@ scale {
 }
 
 window.Bar {
-	background: $bg;
+	background: rgba($bg, 0.95);
+	/* backdrop-filter: blur(10px); */
 	color: $fg;
 	font-family: JetbrainsMono Nerd Font;
 	font-size: 16px;

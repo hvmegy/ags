@@ -2,11 +2,22 @@ import AstalWp from "gi://AstalWp";
 import { Gtk } from "astal/gtk4";
 import { bind } from "astal";
 
-export default function AudioSlider() {
+export default function AudioSlider({
+	widthRequest,
+}: {
+	widthRequest: number;
+}) {
 	const speaker = AstalWp.get_default()?.audio.default_speaker!;
 
 	return (
-		<box cssClasses={["AudioSlider"]} valign={Gtk.Align.CENTER}>
+		<box
+			tooltipText={bind(speaker, "volume").as((volume) => {
+				const result = Math.round(volume * 100).toString() + "%";
+				return result;
+			})}
+			widthRequest={widthRequest}
+			valign={Gtk.Align.CENTER}
+		>
 			<image
 				iconName={bind(speaker, "volumeIcon")}
 				valign={Gtk.Align.CENTER}

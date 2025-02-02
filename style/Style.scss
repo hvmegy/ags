@@ -3,6 +3,7 @@
 @import "PopupWindows.scss";
 @import "Variable.scss";
 @import "Separator.scss";
+@import "TimeButton.scss";
 
 label {
 	font-family: Inter;
@@ -25,14 +26,15 @@ box {
 }
 
 .container {
-	border: 1px solid $fg;
-	background: $bg-1;
-	border-radius: $radius;
-	padding: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+.container-cell {
+	background: $bg-1;
+	padding: 5px;
 }
 
 scale {
@@ -68,7 +70,7 @@ window.Bar {
 	> centerbox {
 		background: #282828;
 		border-radius: 10px;
-		margin: 0px;
+		margin: 2px;
 	}
 
 	button {

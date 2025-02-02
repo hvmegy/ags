@@ -1,14 +1,11 @@
-import AstalMpris from "gi://AstalMpris?version=0.1";
 import AstalWp from "gi://AstalWp?version=0.1";
 import { Gtk } from "astal/gtk4";
 import { bind } from "astal";
 import Popup from "../Popup";
-import MediaPlayer from "./MediaPlayer";
 import AudioSlider from "./AudioSlider";
 
 export default function Audio() {
 	const speaker = AstalWp.get_default()?.audio.default_speaker!;
-	const mpris = AstalMpris.get_default();
 	const popup = (
 		<Popup
 			halign={Gtk.Align.END}
@@ -25,15 +22,12 @@ export default function Audio() {
 				valign={Gtk.Align.CENTER}
 				spacing={10}
 			>
-				{bind(mpris, "players").as((players) => (
-					<MediaPlayer player={players[0]} />
-				))}
-				<AudioSlider />
+				<AudioSlider widthRequest={50} />
 			</box>
 		</Popup>
 	);
 	return (
-		<box cssClasses={["Audio"]} valign={Gtk.Align.CENTER}>
+		<box cssClasses={["Audio", "container"]} valign={Gtk.Align.CENTER}>
 			<button
 				onScroll={(self, _, dy) => {
 					const d = dy > 0.0 ? -0.05 : 0.05;

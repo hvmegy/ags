@@ -5,8 +5,10 @@ import Pango from "gi://Pango";
 
 export default function MediaPlayer({
 	player: player,
+	cssClasses,
 }: {
 	player: AstalMpris.Player;
+	cssClasses: string[];
 }) {
 	if (!player) {
 		return <box />;
@@ -21,14 +23,19 @@ export default function MediaPlayer({
 			: "media-playback-start-symbolic",
 	);
 
+	const { START, CENTER, END } = Gtk.Align;
 	return (
-		<box cssClasses={["media-player"]} spacing={5} widthRequest={200}>
+		<box cssClasses={cssClasses} spacing={5} widthRequest={200}>
+		{ coverArt ? 
 			<image
 				overflow={Gtk.Overflow.HIDDEN}
+				valign={Gtk.Align.START}
 				pixelSize={50}
 				cssClasses={["cover"]}
 				file={coverArt}
 			/>
+			: <></>
+		}
 			<box vertical hexpand>
 				<label
 					ellipsize={Pango.EllipsizeMode.END}
@@ -42,7 +49,7 @@ export default function MediaPlayer({
 			</box>
 			<button
 				halign={Gtk.Align.END}
-				valign={Gtk.Align.CENTER}
+				valign={Gtk.Align.START}
 				onClicked={() => player.next()}
 				visible={bind(player, "canGoPrevious")}
 			>
@@ -50,7 +57,7 @@ export default function MediaPlayer({
 			</button>
 			<button
 				halign={Gtk.Align.END}
-				valign={Gtk.Align.CENTER}
+				valign={Gtk.Align.START}
 				onClicked={() => player.play_pause()}
 				visible={bind(player, "canControl")}
 			>
@@ -58,7 +65,7 @@ export default function MediaPlayer({
 			</button>
 			<button
 				halign={Gtk.Align.END}
-				valign={Gtk.Align.CENTER}
+				valign={Gtk.Align.START}
 				onClicked={() => player.next()}
 				visible={bind(player, "canGoNext")}
 			>

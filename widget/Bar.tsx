@@ -7,7 +7,7 @@ import Internet from "./Internet";
 import Battery from "./Battery";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-	const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
+	const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
 
 	return (
 		<window
@@ -15,10 +15,9 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 			cssClasses={["Bar"]}
 			gdkmonitor={gdkmonitor}
 			exclusivity={Astal.Exclusivity.EXCLUSIVE}
-			anchor={TOP | LEFT | RIGHT}
-			marginTop={5}
-			marginRight={30}
-			marginLeft={30}
+			anchor={BOTTOM | LEFT | RIGHT}
+			// marginRight={50}
+			// marginLeft={50}
 		>
 			<centerbox>
 				<box></box>
@@ -32,7 +31,8 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 					spacing={10}
 				>
 					<Internet />
-					<AudioSlider widthRequest={200} />
+					<Audio />
+					{/* <AudioSlider widthRequest={200} /> */}
 					<Battery />
 				</box>
 			</centerbox>

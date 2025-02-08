@@ -21,6 +21,13 @@ export default function AudioSlider({
 			<image
 				iconName={bind(speaker, "volumeIcon")}
 				valign={Gtk.Align.CENTER}
+				onScroll={(self, _, dy) => {
+					const d = dy > 0.0 ? -0.05 : 0.05;
+					speaker.volume =
+						d < 0
+							? Math.max(speaker.volume + d, 0)
+							: Math.min(speaker.volume + d, 1);
+				}}
 			/>
 			<slider
 				value={bind(speaker, "volume")}

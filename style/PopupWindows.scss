@@ -1,7 +1,9 @@
+@import "Variable.scss";
+
 PopupWindows {
 	background: transparent;
 }
 .PopupContent {
-	background: #282828;
+	background: $bg;
 	/* border: 1px solid $fg; */
 }

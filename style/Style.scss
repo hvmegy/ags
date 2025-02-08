@@ -33,7 +33,7 @@ box {
 }
 
 .container-cell {
-	background: $bg-1;
+	background: $bg1;
 	padding: 5px;
 }
 
@@ -58,22 +58,30 @@ scale {
 	}
 }
 
+button {
+	box-shadow: 0 0 0 0;
+	outline: none;
+	border: none;
+}
+
 window.Bar {
-	background: rgba($bg, 0.95);
+	background: $bg;
 	/* backdrop-filter: blur(10px); */
 	color: $fg;
-	font-family: JetbrainsMono Nerd Font;
+	font-family: Inter;
 	font-size: 16px;
 	font-weight: bold;
-	border-radius: $radius;
+	border-radius: 10px;
+	box-shadow: 0 0 0 0;
 
 	> centerbox {
-		background: #282828;
-		border-radius: 10px;
+		background: $bg;
+		/* border-radius: 10px; */
 		margin: 2px;
 	}
 
 	button {
+		background: $bg1;
 		border-radius: 8px;
 		margin: 1px;
 	}

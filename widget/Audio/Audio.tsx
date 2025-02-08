@@ -6,26 +6,6 @@ import AudioSlider from "./AudioSlider";
 
 export default function Audio() {
 	const speaker = AstalWp.get_default()?.audio.default_speaker!;
-	const popup = (
-		<Popup
-			halign={Gtk.Align.END}
-			valign={Gtk.Align.START}
-			marginTop={75}
-			marginRight={20}
-			marginLeft={10}
-		>
-			<box
-				cssClasses={["AudioContainer"]}
-				widthRequest={200}
-				orientation={Gtk.Orientation.VERTICAL}
-				halign={Gtk.Align.CENTER}
-				valign={Gtk.Align.CENTER}
-				spacing={10}
-			>
-				<AudioSlider widthRequest={50} />
-			</box>
-		</Popup>
-	);
 	return (
 		<box cssClasses={["Audio", "container"]} valign={Gtk.Align.CENTER}>
 			<button
@@ -38,7 +18,7 @@ export default function Audio() {
 					// printerr("FROM BUTTON: " + d, dy, speaker.volume);
 				}}
 				iconName={bind(speaker, "volumeIcon")}
-				onClicked={() => popup.show()}
+				onClicked={() => speaker.set_mute(!speaker.mute)}
 			></button>
 		</box>
 	);

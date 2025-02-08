@@ -7,15 +7,14 @@ import { Widget } from "astal/gtk4";
 
 import { marked } from "marked";
 
-export function WebView({
-	filePath = `${GLib.get_current_dir()}/widget/Note/note.md`,
-}) {
+const filePath = `${GLib.get_current_dir()}/widget/Note/note.md`;
+
+export function WebView() {
 	const noteContent = GLib.file_get_contents(filePath)[1].toString();
 
 	const { START, CENTER, END } = Gtk.Align;
-	const html = marked(noteContent).toString();
 
-	const htmlWithCSS = `
+	const html = `
     <html>
         <head>
         	<style>
@@ -31,31 +30,51 @@ export function WebView({
             </style>
         </head>
         <body>
-            ${html}
+            ${marked(noteContent).toString()}
         </body>
     </html>
 `;
 	const webView = new WebKit60.WebView();
-	webView.load_html(htmlWithCSS, null);
-	webView.vexpand = false;
+	webView.load_html(html, null);
+	webView.vexpand = true;
 	webView.heightRequest = 300;
 	webView.hexpand = true;
 
 	return <box>{webView}</box>;
 }
 
-export default function Note() {
-	const webView = WebView({});
+function ScrollNote() {
+	const webView = WebView();
 	const scrolledWindow = new Gtk.ScrolledWindow();
 	scrolledWindow.set_child(webView);
-	scrolledWindow.heightRequest = 500;
+	scrolledWindow.heightRequest = 300;
 	scrolledWindow.widthRequest = 300;
+	return scrolledWindow;
+}
 
+export default function Note() {
+	const scrollNoteVar = Variable(ScrollNote());
 	return (
 		<box orientation={Gtk.Orientation.VERTICAL}>
 			{/* Add WebView inside the Box */}
-			<button iconName={"edit"} />
-			{scrolledWindow}
+			<box hexpand={true} spacing={5}>
+				<button
+					hexpand
+					iconName={"edit"}
+					onClicked={() => {
+						GLib.spawn_command_line_async(`kitty nvim ${filePath}`);
+					}}
+				/>
+				<button
+					hexpand
+					iconName={"reload"}
+					onClicked={() => {
+						scrollNoteVar.set(ScrollNote());
+					}}
+				/>
+			</box>
+
+			{scrollNoteVar()}
 		</box>
 	);
 }

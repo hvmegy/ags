@@ -1,9 +1,6 @@
 # Quick Note
----
 
-## Let's making it
 
-	- first
-	- second
+--- 
+## 1. keep making it
 
-## second it
